@@ -1,0 +1,8 @@
+{
+  "appName": "Exchange Rate",
+  "env": "local",
+  "openExchangeRates":{
+    "currenciesEndPoint": "https://openexchangerates.org/api/currencies.json",
+    "apiKey": "8d504671d5024da5ad98c3cb41fe702c"
+  }
+}

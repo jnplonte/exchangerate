@@ -1,0 +1,8 @@
+.currencies-container{
+  width: 50%;
+  float: left;
+}
+.date-container{
+  width: 50%;
+  float: right;
+}
