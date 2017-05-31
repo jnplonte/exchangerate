@@ -21,18 +21,23 @@ export class MainComponent  {
 
   selectedCurrency: string;
   selectedDate: string;
-  maxDate: any;
+  selectedHistory: any;
+
+  maxDate: any; 
+  date: any;
 
   constructor(@Inject('openexchangeratesService') openexchangeratesService, @Inject('helperService') helperService) {
     this.currenciesCtrl = new FormControl();
     this.filteredCurrencies = this.currenciesCtrl.valueChanges
         .startWith(null)
         .map(name => this.filterCurrencies(name));
-    
-    this.maxDate = new Date();
 
     this.openexchangeratesService = openexchangeratesService;
     this.helperService = helperService;
+
+    this.maxDate = new Date();
+    this.date = new Date();
+    this.selectedDate = this.helperService.parseDate(this.date);
   }
 
   ngOnInit() {
@@ -53,9 +58,27 @@ export class MainComponent  {
 
   onSelect(event: any, currency: string): void {
     this.selectedCurrency = currency;
+    this.getHistory();
   }
 
   onChange(date: string): void {
     this.selectedDate = this.helperService.parseDate(date);
+    this.getHistory();
+  }
+
+  getHistory(){
+    this.openexchangeratesService.getHistory(this.selectedCurrency, this.selectedDate).subscribe(
+      response => {
+        let his = [];
+         _.each(response.rates, function(row, i) {
+            his.push({"name": i, "value": row});
+        });
+        this.selectedHistory = his;
+      }
+    );
+  }
+
+  showElementResult(){
+    return (this.selectedCurrency && this.selectedDate);
   }
 }

@@ -13,13 +13,22 @@
 
   <div class="date-container">
     <md-input-container>
-      <input mdInput [mdDatepicker]="picker" placeholder="Currency Date" [max]="maxDate" [(ngModel)]="date" (ngModelChange)="onChange($event)">
+      <input readonly="readonly" mdInput [mdDatepicker]="picker" placeholder="Currency Date" [max]="maxDate" [(ngModel)]="date" (ngModelChange)="onChange($event)">
       <button mdSuffix [mdDatepickerToggle]="picker"></button>
     </md-input-container>
     <md-datepicker #picker></md-datepicker>
   </div>
 
-  <div class="result-container">
-    {{selectedCurrency}} {{selectedDate}}
+  <div class="result-container" *ngIf="showElementResult()">
+    <div  class="result-title">
+      <p>exchange rate for {{selectedCurrency}} on {{selectedDate}}</p>
+    </div>
+    <div  class="result-history">
+      <ul class="result-cur-container">
+        <li class="result-cur" *ngFor="let curHistory of selectedHistory">
+          {{ curHistory.name }} - {{ curHistory.value }}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

@@ -3,6 +3,7 @@
   "env": "local",
   "openExchangeRates":{
     "currenciesEndPoint": "https://openexchangerates.org/api/currencies.json",
+    "historyEndPoint": "https://openexchangerates.org/api/historical",
     "apiKey": "8d504671d5024da5ad98c3cb41fe702c"
   }
 }
