@@ -24,3 +24,5 @@
 
 ## Building Production
 - run `npm run build`
+
+NOTE: api end point and site config can be found on {root}/config/site/site-config.json 
