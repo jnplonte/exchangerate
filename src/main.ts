@@ -7,6 +7,8 @@ import { ConfigService } from './app/services/config.service';
 
 import './style/styles.css';
 
+import './style/theme.css';
+
 if (process.env.ENV === 'production') {
   enableProdMode();
 }

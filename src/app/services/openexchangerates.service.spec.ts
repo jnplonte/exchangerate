@@ -1,9 +1,10 @@
-import { inject, TestBed } from '@angular/core/testing';
-import {By} from "@angular/platform-browser";
+import { TestBed, inject } from '@angular/core/testing';
+import { By } from "@angular/platform-browser";
 
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { OpenExchangeRatesService } from './../services/openexchangerates.service';
+import { ConfigService } from './../services/config.service';
 
 describe('Service: OpenExchangeRatesService', function () {
   let service;
@@ -11,7 +12,7 @@ describe('Service: OpenExchangeRatesService', function () {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule, JsonpModule],
-      providers: [ OpenExchangeRatesService ]
+      providers: [ OpenExchangeRatesService, {provide: 'configService', useFactory: () => ConfigService.getInstance()} ]
     });
   });
 
@@ -19,9 +20,7 @@ describe('Service: OpenExchangeRatesService', function () {
     service = s;
   }));
 
-  it('should check if the api service is define', () => {
-    expect(service.getCurrencies()).toBeDefined();
-    expect(service.extractData()).toBeDefined();
-    expect(service.handleError()).toBeDefined();
+  it('should check if the open exchange service is define', () => {
+    expect(service).toBeDefined();
   });
 });

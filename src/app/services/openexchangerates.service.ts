@@ -20,7 +20,8 @@ export class OpenExchangeRatesService {
   }
 
   getHistory(selectedCurrency, selectedDate){
-      //hardcoded baseCurrency to USD because free api only support this.
+      // hardcoded baseCurrency to USD because free api only support this.
+      // let historysUrl = this.config.openExchangeRates.historyEndPoint + "/"+ selectedDate + ".json?app_id=" + this.config.openExchangeRates.apiKey + "&base=" + selectedCurrency;
       let historysUrl = this.config.openExchangeRates.historyEndPoint + "/"+ selectedDate + ".json?app_id=" + this.config.openExchangeRates.apiKey + "&base=USD";
       return this.http.get(historysUrl)
         .map(this.extractData)

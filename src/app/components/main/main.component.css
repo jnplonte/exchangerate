@@ -12,6 +12,7 @@
   border-radius: 2px;
   overflow: hidden;
   position: relative;
+  padding: 0px;
 }
 .result-cur-container .result-cur{
   background-color: #fff;

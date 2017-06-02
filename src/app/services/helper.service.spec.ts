@@ -1,5 +1,5 @@
 import { inject, TestBed } from '@angular/core/testing';
-import { By }           from '@angular/platform-browser';
+import { By } from '@angular/platform-browser';
 
 import { HelperService } from './../services/helper.service';
 
@@ -17,6 +17,7 @@ describe('Service: HelperService', function () {
   }));
 
   it('should check if the helper service is define', () => {
+    expect(service).toBeDefined();
     expect(service.parseDate()).toBeDefined();
   });
 });

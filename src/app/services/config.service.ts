@@ -9,7 +9,9 @@ import 'rxjs/add/operator/map';
 export class ConfigService {
   private static cache = null;
 
-  constructor(private data: any) { }
+  constructor(private data: any) { 
+      
+  }
 
   public static loadInstance(jsonFile: string) {
       return new Promise((resolve, reject) => {
